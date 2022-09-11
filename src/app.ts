@@ -14,7 +14,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
 ): Promise<void> => {
   // Place here your custom code!
   fastify.register(fastifyMultipart, {
-    // attachFieldsToBody: true,
+    attachFieldsToBody: true,
     sharedSchemaId: "#mySharedSchema",
     // onFile,
     limits: {
