@@ -19,25 +19,25 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   `;
   });
 
-  // const body = {
-  //   type: "object",
-  //   properties: {
-  //     images: {
-  //       type: "array",
-  //       items: fastify.getSchema("mySharedSchema"),
-  //       minItems: 1,
-  //       maxItems: 400,
-  //     },
-  //   },
-  //   additionalProperties: true,
-  // };
+  const body = {
+    type: "object",
+    properties: {
+      images: {
+        type: "array",
+        items: fastify.getSchema("mySharedSchema"),
+        minItems: 1,
+        maxItems: 400,
+      },
+    },
+    additionalProperties: true,
+  };
 
   fastify.post(
     "/",
     {
-      // schema: {
-      //   body: body,
-      // },
+      schema: {
+        body: body,
+      },
     },
     async (req, reply) => {
       const files = await req.saveRequestFiles();
